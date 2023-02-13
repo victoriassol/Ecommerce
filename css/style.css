@@ -1,0 +1,49 @@
+.carousel-item {
+    height: 50vh;
+  }
+.card {
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.footer-cta {
+box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+}
+.price {
+color: #263238;
+font-size: 24px;
+}
+
+.card-title {
+color:#263238
+}
+
+.bg-image{
+  max-width: 100%;
+  height: 250px;
+
+}
+
+.bg-image img{
+  object-fit:cover;
+  height: 100%;
+  width: 100%
+}
+
+.products{
+  width: 90%;
+  margin: auto;
+}
+
+.addToCart{
+  color:white;
+  background-color:lightcoral;
+  border-radius: 30px;
+  border: none;
+  padding: 3%;
+  margin: 2%
+}
+
+#number{
+  width: 45px;
+  padding: 3%;
+  border-radius: 100px;
+}

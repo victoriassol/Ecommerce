@@ -23,7 +23,9 @@ let stock = [{id: 1,
     nombre: 'Chocolatada',
     precio: 250},
 ]
-let carrito=[]
+let carrito=[];
+
+const cartIcon = document.getElementById('cart-icon');
 
 document.addEventListener('DOMContentLoaded', ()=> {
     if (localStorage.getItem('carrito')){
@@ -32,12 +34,13 @@ document.addEventListener('DOMContentLoaded', ()=> {
     }
 })
 
-let precioTotal = document.getElementsByClassName('precioTotal')[0]
-console.log(precioTotal)
-const contadorCarrito= document.getElementById('contadorCarrito')
+let precioTotal = document.getElementsByClassName('precioTotal')[0];
+
+const contadorCarrito= document.getElementById('cart-count');
 
 var modalCarrito = document.getElementById("modal-carrito");
-let contenidoCarrito = document.getElementById("carrito-contenido")
+
+let contenidoCarrito = document.getElementById("carrito-contenido");
 
 // Get the button that opens the modal
 var abrirCarrito = document.getElementById("btn-openCart");
@@ -52,7 +55,7 @@ abrirCarrito.onclick = function() {
 
 // When the user clicks on <span> (x), close the modal
 
-
+ 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modalCarrito) {
@@ -65,6 +68,30 @@ stock.forEach((producto) => {
     const botonAgregar = document.getElementById(`agregar${producto.id}`)
     botonAgregar.addEventListener('click', ()=>{
         agregarAlCarrito(producto.id)
+        // Create a new HTML element for the little item
+    const item = document.createElement('div');
+    item.classList.add('item');
+
+  // Append the item to the document body
+    document.body.appendChild(item);
+
+  // Define the animation properties
+    const animation = anime({
+        targets: item,
+        translateX: cartIcon.offsetLeft - item.offsetLeft, // move the item to the cart icon
+        translateY: cartIcon.offsetTop - item.offsetTop, // move the item to the cart icon
+        scale: 0.5, // scale down the item
+        duration: 1000, // animation duration in milliseconds
+        easing: 'easeInOutQuad', // easing function
+        complete: () => {
+        // Remove the item from the document body when the animation is complete
+        item.remove();
+
+        // Increment the cart count and update the cart notification icon
+        const cartCount = document.getElementById('cart-count');
+        cartCount.textContent = parseInt(cartCount.textContent) + 1;
+        }
+    });
         
     })
 })
@@ -97,7 +124,6 @@ let eliminarDelCarrito = (prodId) => {
 
 const calcularTotal= function(){
     let total = carrito.reduce((acc, producto)=> acc + producto.precio, 0)
-    console.log(`Su total es ${total}`)
 }
 
 let actualizarCarrito = ()=>{
@@ -107,8 +133,7 @@ let actualizarCarrito = ()=>{
         div.className = ('productoEnCarrito')
         div.innerHTML = `
         <p>${prod.nombre}</p>
-        <p>${prod.precio}</p>
-        <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
+        <p>${prod.precio}</p>        
         <button onclick="eliminarDelCarrito(${prod.id})" class="btn-eliminar"><i class="fas fa-trash-alt"></i>
         `
         calcularTotal()

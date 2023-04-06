@@ -15,6 +15,7 @@
   <!-- MDB -->
   <link rel="stylesheet" href="css/mdb.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 
 <body>
@@ -60,11 +61,14 @@
     <!-- Collapsible wrapper -->
     
     <!-- Right elements -->
+
     <div class="d-flex align-items-center">
       <!-- Icon -->
       <a class="nav-link me-3" href="#" id="btn-openCart">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="badge rounded-pill badge-notification bg-danger" id="contadorCarrito"></span>
+        <div id="cart-icon">
+          <i class="fa fa-shopping-cart"></i>
+          <span class="badge rounded-pill badge-notification bg-danger" id="cart-count"></span>
+        </div>
       </a>
 
       <div id="modal-carrito" class="carrito">
@@ -185,7 +189,7 @@
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
-  
+<div id="weather-data"></div>
 <!-- Products -->
   <section class="products">
   <div class="text-center">
@@ -471,6 +475,8 @@
   <!-- MDB -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
   <!-- Custom scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/weather.js"></script>
   <script type="text/javascript" src="app.js"></script>
 </body>
 

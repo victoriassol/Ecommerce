@@ -42,21 +42,21 @@ var modalCarrito = document.getElementById("modal-carrito");
 
 let contenidoCarrito = document.getElementById("carrito-contenido");
 
-// Get the button that opens the modal
+
 var abrirCarrito = document.getElementById("btn-openCart");
 
-// Get the <span> element that closes the modal
+
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on the button, open the modal
+
 abrirCarrito.onclick = function() {
     modalCarrito.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
+
 
  
-// When the user clicks anywhere outside of the modal, close it
+
 window.onclick = function(event) {
   if (event.target == modalCarrito) {
     modalCarrito.style.display = "none";
@@ -68,26 +68,26 @@ stock.forEach((producto) => {
     const botonAgregar = document.getElementById(`agregar${producto.id}`)
     botonAgregar.addEventListener('click', ()=>{
         agregarAlCarrito(producto.id)
-        // Create a new HTML element for the little item
+        
     const item = document.createElement('div');
     item.classList.add('item');
 
-  // Append the item to the document body
+  
     document.body.appendChild(item);
 
-  // Define the animation properties
+  
     const animation = anime({
         targets: item,
-        translateX: cartIcon.offsetLeft - item.offsetLeft, // move the item to the cart icon
-        translateY: cartIcon.offsetTop - item.offsetTop, // move the item to the cart icon
-        scale: 0.5, // scale down the item
-        duration: 1000, // animation duration in milliseconds
-        easing: 'easeInOutQuad', // easing function
+        translateX: cartIcon.offsetLeft - item.offsetLeft, 
+        translateY: cartIcon.offsetTop - item.offsetTop, 
+        scale: 0.5, 
+        duration: 1000, 
+        easing: 'easeInOutQuad', 
         complete: () => {
-        // Remove the item from the document body when the animation is complete
+        
         item.remove();
 
-        // Increment the cart count and update the cart notification icon
+        
         const cartCount = document.getElementById('cart-count');
         cartCount.textContent = parseInt(cartCount.textContent) + 1;
         }
